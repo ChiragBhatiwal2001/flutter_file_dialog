@@ -14,7 +14,7 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
-import io.flutter.plugin.common.PluginRegistry.Registrar
+// import io.flutter.plugin.common.PluginRegistry.Registrar
 
 class FlutterFileDialogPlugin : FlutterPlugin, ActivityAware, MethodCallHandler {
     private var fileDialog: FileDialog? = null
@@ -178,12 +178,18 @@ class FlutterFileDialogPlugin : FlutterPlugin, ActivityAware, MethodCallHandler 
     //     return fileDialog != null
     // }
 
-    private fun createFileDialog(): Boolean {
-    val binding = activityBinding ?: return false
+   private fun createFileDialog(): Boolean {
+        Log.d(LOG_TAG, "createFileDialog - IN")
+        var fileDialog: FileDialog? = null
+        fileDialog = FileDialog(
+                     activity = activityBinding!!.activity
+        )
+        activityBinding!!.addActivityResultListener(fileDialog)
+        this.fileDialog = fileDialog
 
-    fileDialog = FileDialog(activity = binding.activity)
-    binding.addActivityResultListener(fileDialog!!)
-    return true
+        Log.d(LOG_TAG, "createFileDialog - OUT")
+
+        return fileDialog != null
     }
 
     
