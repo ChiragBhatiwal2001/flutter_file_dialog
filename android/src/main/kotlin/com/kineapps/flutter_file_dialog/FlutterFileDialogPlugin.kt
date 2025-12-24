@@ -25,8 +25,8 @@ class FlutterFileDialogPlugin : FlutterPlugin, ActivityAware, MethodCallHandler 
     // V1 only
     // private var registrar: Registrar? = null
 
-    // companion object {
-    //     const val LOG_TAG = "FlutterFileDialogPlugin"
+    companion object {
+        const val LOG_TAG = "FlutterFileDialogPlugin"
     //     @JvmStatic
     //     fun registerWith(registrar: Registrar) {
     //         Log.d(LOG_TAG, "registerWith")
@@ -36,7 +36,7 @@ class FlutterFileDialogPlugin : FlutterPlugin, ActivityAware, MethodCallHandler 
     //             plugin.doOnAttachedToActivity(null, registrar)
     //         }
     //     }
-    // }
+    }
 
     override fun onAttachedToEngine(binding: FlutterPlugin.FlutterPluginBinding) {
         Log.d(LOG_TAG, "onAttachedToEngine - IN")
